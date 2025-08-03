@@ -1,0 +1,13 @@
+stages:
+  - deploy
+
+jenkins_setup:
+  stage: deploy
+  script:
+    - cd jenkins_server
+    - terraform init
+    - terraform apply -auto-approve
+  only:
+    changes:
+      - jenkins_server/*
+
